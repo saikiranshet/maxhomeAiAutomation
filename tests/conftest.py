@@ -38,3 +38,9 @@ def setupcheck():
         time.sleep(10)
         yield page
         browser.close()
+        
+        
+def pytest_sessionstart(session):
+    # Clean reports before tests
+    from utils.clean_reports import clean_reports_folder
+    clean_reports_folder()
