@@ -1,0 +1,7 @@
+# config.yaml
+credentials:
+  adminusername: "admin"
+  password: "admin123"
+  invalid_username: "wrongpass"
+  invalid_password: "wronguser"
+  
