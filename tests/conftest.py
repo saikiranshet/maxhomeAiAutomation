@@ -1,4 +1,5 @@
-
+import pytest
+from playwright.sync_api import sync_playwright
 import sys
 import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -12,6 +13,8 @@ import time
 # Load .env file
 load_dotenv()
 
+# Access environment variables
+# api_key = os.getenv("API_KEY")
 
 def pytest_addoption(parser):
     parser.addoption(
@@ -28,7 +31,7 @@ def pytest_addoption(parser):
         help="Browser to use: chromium, firefox, or webkit (default: chromium)"
     )
 
-@pytest.fixture(scope="session")
+@pytest.fixture(scope="function")
 def setupcheck(request):
     """Set up the browser and page for all tests in the session."""
     url = os.getenv("LOCAL_SETUP_URL")

@@ -62,6 +62,9 @@ This repository contains an automated test suite for the Bloggy fullstack blog a
 ## Test Report
 - After running tests, open `reports/report.html` in your browser to view results.
 
+## CI/CD Integration
+- (Optional) Add a `.github/workflows/ci.yml` for GitHub Actions to run tests on every push.
+
 ## Assumptions & Notes
 - The backend and frontend servers must be running before tests.
 - Test data is reset using `npm run reset && npm run seed`.
