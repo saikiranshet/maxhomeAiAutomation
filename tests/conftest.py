@@ -31,9 +31,13 @@ def pytest_addoption(parser):
         help="Browser to use: chromium, firefox, or webkit (default: chromium)"
     )
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="session")
 def setupcheck(request):
-    """Set up the browser and page for all tests in the session."""
+    """Set up a single browser and page for the entire test session.
+
+    This keeps the same logged-in session active across all tests that use
+    this fixture, until the full pytest run is completed.
+    """
     url = os.getenv("LOCAL_SETUP_URL")
     print(f"Testing URL: {url}")
     headless = request.config.getoption("--headless")
