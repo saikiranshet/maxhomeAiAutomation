@@ -46,9 +46,9 @@ def setupcheck(request):
         browser_launcher = getattr(p, browser_name)
         browser = browser_launcher.launch(
             headless=headless,
-            args=["--start-maximized", "--window-size=1920,1080"]  # Ensure full-screen
+            args=["--start-maximized", "--window-size=1920,1080"]  
         )
-        page = browser.new_page(viewport=None)  # No viewport restriction
+        page = browser.new_page(viewport=None) 
         page.goto(url)
         time.sleep(10)
         yield page
@@ -56,6 +56,9 @@ def setupcheck(request):
         
         
 def pytest_sessionstart(session):
-    # Clean reports before tests
-    from utils.clean_reports import clean_reports_folder
-    clean_reports_folder()
+    try:
+        from utils.clean_reports import clean_reports_folder
+        clean_reports_folder()
+    except ImportError:
+        # clean_reports module not available, skip cleaning
+        pass
