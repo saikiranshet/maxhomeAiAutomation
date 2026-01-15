@@ -153,8 +153,8 @@ class LoginPage:
     
   
     def login_user_with_invalid_creds(self):
-        self.username_field.click()
         self.admin_button.click()
+        self.username_field.click()
         self.username_field.fill(config["credentials"]["invalid_username"])
         self.submit_button.click()
         self.password_field.fill(config["credentials"]["invalid_password"])
