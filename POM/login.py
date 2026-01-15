@@ -50,7 +50,8 @@ class LoginPage:
         self.no_blogs_found = page.locator(LoginPageLocators.NO_BLOGS_FOUND)
         self.blog_card = page.locator(LoginPageLocators.BLOG_CARD)
         self.blog_card_title = page.locator(LoginPageLocators.BLOG_CARD_TITLE)
-        self.switch_to_dark_mode = page.locator(LoginPageLocators.SWITCH_TO_DARK_MODE)
+        self.switch_to_dark_mode_button = page.locator(LoginPageLocators.SWITCH_TO_DARK_MODE_BUTTON)
+        self.dark_mode_active_button = page.locator(LoginPageLocators.DARK_MODE_ACTIVE_BUTTON)
         
     def home_screen(self):
         self.home_button.click()
@@ -60,18 +61,20 @@ class LoginPage:
     def reload_page(self):
         self.page.reload()
         self.page.wait_for_load_state("networkidle", timeout=10000)
-        time.sleep(1)
     
     def switch_to_dark_mode(self):
-        self.switch_to_dark_mode.click()
+        self.switch_to_dark_mode_button.click()
         self.page.wait_for_load_state("networkidle", timeout=10000)
-        time.sleep(1)
     
     def verify_dark_mode_active(self):
         time.sleep(1)
-        body_class = self.page.locator("body").get_attribute("class") or ""
-        assert "dark" in body_class.lower(), "Dark mode should be active"
-       
+        self.dark_mode_active_button.is_visible(timeout=10000)
+        assert self.dark_mode_active_button.is_visible(timeout=10000), "Switch to light mode"
+
+    def switch_to_light_mode(self):
+        self.switch_to_light_mode_button.click()
+        self.page.wait_for_load_state("networkidle", timeout=10000)
+        
     def search_screen(self, search_term="Saikiran Shet"):
         self.search_input.click()
         self.search_input.fill(search_term)

@@ -33,5 +33,6 @@ class LoginPageLocators:
     NO_BLOGS_FOUND = "//*[contains(text(),'No blogs found')] | //*[contains(text(),'No Blogs Found')] | //*[contains(text(),'No results found')]"
     BLOG_CARD = "//article | //div[contains(@class,'blog')] | //div[contains(@class,'card')] | //*[contains(@data-testid,'blog')]"
     BLOG_CARD_TITLE = "//h2[contains(text(),'Getting Started with TypeScript')]"
-    SWITCH_TO_DARK_MODE = "//*[@id='root']/header/div/div/button"
+    SWITCH_TO_DARK_MODE_BUTTON = "//*[@id='root']/header/div/div/button"
     READMORE_BUTTON = "//button[contains(text(),'Read More')]"
+    DARK_MODE_ACTIVE_BUTTON = "//*[@id='root']/header/div/div/button"
