@@ -6,7 +6,10 @@ from POM.login import LoginPage
 def test_ADM_LOGIN_01(setupcheck):
     page = setupcheck
     login_page = LoginPage(page)
-    login_page.login_user()
+    try:
+        login_page.login_user()
+    finally:
+        login_page.logout_user()
 
 
 def test_ADM_LOGIN_02(setupcheck):

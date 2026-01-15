@@ -22,7 +22,7 @@ class LoginPageLocators:
     SAVE_BUTTON = "//*[contains(text(),'Save')]"
     CANCEL_BUTTON = "//*[contains(text(),'Cancel')]"
     TEST_TITLE_CREATED = "//td[contains(text(),'Test Title')]"
-    DELETE_ICON = "//tr[.//td[contains(text(),'Test Title')]]//button[contains(@aria-label,'Delete')]"
+    DELETE_ICON = "//*[@id='root']/div/div[2]/table/tbody/tr[1]/td[8]/button[3]"
     CONFIRM_DELETE_BUTTON = "//button[contains(text(),'Delete') and not(contains(text(),'Cancel'))] | //button[@type='button' and contains(text(),'Delete')]"
     CANCEL_DELETE_BUTTON = "//button[contains(text(),'Cancel')]"
     DASHBOARD_TITLE = "//a[contains(text(),'Dashboard')]"

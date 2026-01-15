@@ -40,7 +40,7 @@ class LoginPage:
         self.cancel_button = page.locator(LoginPageLocators.CANCEL_BUTTON)
         self.content_click = page.locator(LoginPageLocators.CONTENT_CLICK)
         self.test_title_created_check = page.locator(LoginPageLocators.TEST_TITLE_CREATED)
-        self.delete_icon = page.locator(LoginPageLocators.DELETE_ICON)
+        self.delete_1st_icon = page.locator(LoginPageLocators.DELETE_ICON)
         self.delete_button = page.locator(LoginPageLocators.DELETE_BUTTON)
         self.confirm_delete_button = page.locator(LoginPageLocators.CONFIRM_DELETE_BUTTON)
         self.cancel_delete_button = page.locator(LoginPageLocators.CANCEL_DELETE_BUTTON)
@@ -104,15 +104,8 @@ class LoginPage:
         self.password_field.click()
         self.password_field.fill(config["credentials"]["password"])
         self.submit_button.click()
-        self.logout_button.click()  
-        time.sleep(10)
         
-    def login_user_for_blog(self):
-        self.admin_button.click()
-        self.username_field.fill(config["credentials"]["adminusername"])
-        self.submit_button.click()
-        self.password_field.fill(config["credentials"]["password"])
-        self.submit_button.click()
+    def login_user_for_blog(self): 
         self.blog_post_button.click()
         self.title_check.fill("Test Title")
         self.excerpt_check.click()
@@ -147,9 +140,21 @@ class LoginPage:
         title_locator.wait_for(state="visible", timeout=10000)
         title_text = title_locator.inner_text(timeout=5000)
         assert "Test Title" in title_text, f"Expected 'Test Title' but found: {title_text}"
+
+    def logout_user(self):
+        try:
+            if self.logout_button.is_visible(timeout=5000):
+                self.logout_button.click()
+                time.sleep(1)
+        except Exception:
+            # Logout button not found or already logged out, ignore
+            pass
     
     def click_delete_icon_for_blog(self, blog_title="Test Title"):
-        self.delete_icon.click()
+        self.delete_1st_icon.click()
+        self.confirm_delete_button.click()
+        self.page.wait_for_load_state("networkidle", timeout=10000)
+        time.sleep(2)
     
   
     def login_user_with_invalid_creds(self):
