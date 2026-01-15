@@ -17,4 +17,6 @@ def test_ADM_LOGIN_02(setupcheck):
     login_page = LoginPage(page)
     page.reload()
     login_page.login_user_with_invalid_creds()
+    login_page.home_screen()
+    
 
