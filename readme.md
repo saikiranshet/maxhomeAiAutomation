@@ -31,39 +31,25 @@ This repository contains an automated test suite for the Bloggy fullstack blog a
    pip install -r src/requirements.txt
    playwright install
    ```
-4. **Set environment variables:**
-   - Copy `.env.example` to `.env` and update values as needed (e.g., `LOCAL_SETUP_URL`).
 
 ## How to Run Tests
 
 ### Run All Tests
 - **Default (headed, Chromium):**
   ```sh
-  pytest tests/ --html=reports/report.html --self-contained-html
+  python -m pytest tests/ --html=reports/report.html --self-contained-html
   ```
 - **Headless mode:**
   ```sh
-  pytest tests/ --headless --html=reports/report.html --self-contained-html
+  python -m pytest tests/ --headless --html=reports/report.html --self-contained-html
   ```
 - **Different browsers:**
   ```sh
-  pytest tests/ --browser=firefox
-  pytest tests/ --browser=webkit
+  python -m pytest tests/ --browser=firefox
+  python -m pytest tests/ --browser=webkit
   ```
 
 ### Run Specific Test Suites
-- **Blog Management Tests:**
-  ```sh
-  pytest tests/test_blog_management.py --html=reports/report.html --self-contained-html
-  ```
-- **Public Blog Viewing Tests:**
-  ```sh
-  pytest tests/test_public_blog_viewing.py --html=reports/report.html --self-contained-html
-  ```
-- **Pagination Tests:**
-  ```sh
-  pytest tests/test_pagination.py --html=reports/report.html --self-contained-html
-  ```
 - **Admin Login Tests:**
   ```sh
   pytest tests/testLoginForAdmin.py --html=reports/report.html --self-contained-html
