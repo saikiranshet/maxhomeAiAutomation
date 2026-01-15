@@ -98,7 +98,6 @@ This repository contains an automated test suite for the Bloggy fullstack blog a
 ### Coverage Areas
 - ✅ Blog management (create, publish, delete with confirmation)
 - ✅ Public blog viewing (list, search, view, theme persistence, read status)
-- ✅ Pagination (navigation, URL state persistence)
 - ✅ Admin login and protected routes
 
 ## Test Report
