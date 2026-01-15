@@ -167,10 +167,10 @@ class LoginPage:
   
     def login_user_with_invalid_creds(self):
         self.reload_page()
+        self.home_screen()
         self.admin_button.click()
         self.username_field.click()
         self.username_field.fill(config["credentials"]["invalid_username"])
-        self.submit_button.click()
         self.password_field.fill(config["credentials"]["invalid_password"])
         self.submit_button.click()
         assert self.page.locator(LoginPageLocators.INVALID_CREDENTIALS_MESSAGE).is_visible()
