@@ -154,17 +154,17 @@ pip install -r requirements.txt
 playwright install
 
 # Run all tests (default)
-pytest tests/
+python -m pytest tests/
 
 # Run all tests with HTML report
-pytest tests/ --html=reports/report.html --self-contained-html
+python -m pytest tests/ --html=reports/report.html --self-contained-html
 
 # Run in headless mode
-pytest tests/ --headless
+python -m pytest tests/ --headless
 
 # Run with specific browser
-pytest tests/ --browser=firefox
-pytest tests/ --browser=webkit
+python -m pytest tests/ --browser=firefox
+python -m pytest tests/ --browser=webkit
 ```
 
 ## 📋 Test Execution Quick Reference
@@ -172,22 +172,22 @@ pytest tests/ --browser=webkit
 ### Run Specific Test Files
 ```bash
 # Admin login tests
-pytest tests/testLoginForAdmin.py
+python -m pytest tests/testLoginForAdmin.py
 
 # Blog management tests
-pytest tests/testblogging.py
+python -m pytest tests/testblogging.py
 
 # Both test files
-pytest tests/testLoginForAdmin.py tests/testblogging.py
+python -m pytest tests/testLoginForAdmin.py tests/testblogging.py
 ```
 
 ### Run Specific Test Functions
 ```bash
 # Run single test by name
-pytest tests/testLoginForAdmin.py::test_ADM_LOGIN_01
+python -m pytest tests/testLoginForAdmin.py::test_ADM_LOGIN_01
 
 # Run single test with verbose output
-pytest tests/testblogging.py::test_blogmgmt_001 -v
+python -m pytest tests/testblogging.py::test_blogmgmt_001 -v
 
 # Run tests matching pattern
 pytest -k "login" tests/
